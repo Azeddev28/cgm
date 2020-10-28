@@ -1,0 +1,21 @@
+.circle-wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: stretch;
+  align-items: center;
+  height: 200px;
+}
+
+.circle-wrap .circle {
+  height: 150px;
+  width: 150px;
+  background-color: rgba(0, 255, 0, 0.5);
+  border: 1px solid #00cc00;
+  color: #FFF;
+  font-size: 50px;
+  text-align: center;
+  line-height: 150px;
+  border-radius: 50%;
+}

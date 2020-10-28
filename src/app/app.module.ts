@@ -13,6 +13,7 @@ import { PatientGlucoseMonitoringComponent } from './patient-glucose-monitoring/
 import { PatientMealPlanComponent } from './patient-meal-plan/patient-meal-plan.component';
 import { PatientInsulineScheduleComponent } from './patient-insuline-schedule/patient-insuline-schedule.component';
 import { PatientContactDoctorComponent } from './patient-contact-doctor/patient-contact-doctor.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { PatientContactDoctorComponent } from './patient-contact-doctor/patient-
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
