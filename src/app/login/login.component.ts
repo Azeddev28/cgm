@@ -1,5 +1,7 @@
+import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +24,9 @@ export class LoginComponent implements OnInit {
   }
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public authService: AuthService,
+    public router: Router
   ) { }
 
 
@@ -30,6 +34,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-
+    this.router.navigate(['/patient']);
+    this.authService.login();
   }
 }

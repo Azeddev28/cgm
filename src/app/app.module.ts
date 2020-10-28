@@ -1,3 +1,4 @@
+import { AuthService } from './auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -35,7 +36,7 @@ import { ChartsModule } from 'ng2-charts';
     AppRoutingModule,
     ChartsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
