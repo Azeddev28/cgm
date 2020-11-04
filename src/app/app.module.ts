@@ -15,6 +15,9 @@ import { PatientMealPlanComponent } from './patient-meal-plan/patient-meal-plan.
 import { PatientInsulineScheduleComponent } from './patient-insuline-schedule/patient-insuline-schedule.component';
 import { PatientContactDoctorComponent } from './patient-contact-doctor/patient-contact-doctor.component';
 import { ChartsModule } from 'ng2-charts';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastNotificationsModule } from 'ngx-toast-notifications';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { ChartsModule } from 'ng2-charts';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    ChartsModule
+    ChartsModule,
+    HttpClientModule,
+    ToastNotificationsModule,
+    BrowserAnimationsModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

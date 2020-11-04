@@ -2,6 +2,7 @@ import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Toaster } from 'ngx-toast-notifications';
 
 @Component({
   selector: 'app-login',
@@ -10,13 +11,15 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  disableButton = false;
+
   loginForm: FormGroup = this.formBuilder.group({
-    email: ['', [Validators.email, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/), Validators.required]],
-    password: ['', [Validators.minLength(6), Validators.required]],
+    username: ['', [Validators.required]],
+    password: ['', [Validators.minLength(3), Validators.required]],
   });
 
-  get email(): AbstractControl {
-    return this.loginForm.get('email');
+  get username(): AbstractControl {
+    return this.loginForm.get('username');
   }
 
   get password(): AbstractControl {
@@ -26,15 +29,22 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     public authService: AuthService,
-    public router: Router
+    public router: Router,
+    public toaster: Toaster
   ) { }
 
 
   ngOnInit(): void {
   }
 
-  login(): void {
-    this.router.navigate(['/patient']);
-    this.authService.login();
+  async login(): Promise<void> {
+    this.disableButton = true;
+    try {
+      await this.authService.login(this.username.value, this.password.value);
+      this.router.navigate(['/patient']);
+    } catch (error) {
+      this.toaster.open('Invalid username or password');
+    }
+    this.disableButton = false;
   }
 }

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
+import { Toaster } from 'ngx-toast-notifications';
 
 @Component({
   selector: 'app-signup',
@@ -7,33 +10,44 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-
+  disableButton = false;
   signupForm: FormGroup = this.formBuilder.group({
-    name: ['', [ Validators.minLength(1) ]],
-    email: ['', [Validators.email, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/), Validators.required]],
+    username: ['', [Validators.required]],
     password: ['', [Validators.minLength(6), Validators.required]],
+    usertype: ['patient', []]
   });
 
-  get name(): AbstractControl {
-    return this.signupForm.get('name');
-  }
-
-  get email(): AbstractControl {
-    return this.signupForm.get('email');
+  get username(): AbstractControl {
+    return this.signupForm.get('username');
   }
 
   get password(): AbstractControl {
     return this.signupForm.get('password');
   }
 
+  get usertype(): AbstractControl {
+    return this.signupForm.get('usertype');
+  }
+
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public authService: AuthService,
+    public router: Router,
+    public toaster: Toaster
   ) { }
 
   ngOnInit(): void {
   }
 
-  signup(): void {
-
+  async signup(): Promise<void> {
+    this.disableButton = true;
+    try {
+      await this.authService.signup(this.username.value, this.password.value, this.usertype.value);
+      this.router.navigate(['/patient']);
+    } catch (error) {
+      console.log(error);
+      this.toaster.open('Something went wrong');
+    }
+    this.disableButton = false;
   }
 }
