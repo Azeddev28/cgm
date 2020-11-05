@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, BaseChartDirective, Label } from 'ng2-charts';
 import * as pluginAnnotations from 'chartjs-plugin-annotation';
+import {CheckGlucoseLevelService} from './check-glucose-level.service'
 
 @Component({
   selector: 'app-patient-glucose-monitoring',
@@ -9,6 +10,7 @@ import * as pluginAnnotations from 'chartjs-plugin-annotation';
   styleUrls: ['./patient-glucose-monitoring.component.css']
 })
 export class PatientGlucoseMonitoringComponent implements OnInit {
+  glucoseReadingValue = null;
   public glucoseReadingData: ChartDataSets[] = [
     { data: [90, 140, 95, 93, 92, 94, 92], label: 'Patient Glucose' },
   ];
@@ -21,8 +23,20 @@ export class PatientGlucoseMonitoringComponent implements OnInit {
     maintainAspectRatio: false,
   };
 
-  constructor() { }
+  constructor(private api:CheckGlucoseLevelService) { 
+    this.getGlucoseReading();
+  }
 
+  getGlucoseReading = () => {
+    this.api.getGlucoseReading().subscribe(
+      data => {
+        this.glucoseReadingValue = parseFloat(data['glucose_level']).toFixed(2);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  };
   ngOnInit(): void {
   }
 }

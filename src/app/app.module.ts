@@ -18,6 +18,8 @@ import { ChartsModule } from 'ng2-charts';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastNotificationsModule } from 'ngx-toast-notifications';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DoctorPatientListComponent } from './doctor-patient-list/doctor-patient-list.component';
+import { PatientGlucoseHistoryComponent } from './patient-glucose-history/patient-glucose-history.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PatientGlucoseMonitoringComponent,
     PatientMealPlanComponent,
     PatientInsulineScheduleComponent,
-    PatientContactDoctorComponent
+    PatientContactDoctorComponent,
+    DoctorPatientListComponent,
+    PatientGlucoseHistoryComponent
   ],
   imports: [
     BrowserModule,

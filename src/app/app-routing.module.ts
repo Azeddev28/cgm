@@ -1,3 +1,5 @@
+import { PatientMealPlanComponent } from './patient-meal-plan/patient-meal-plan.component';
+import { PatientGlucoseHistoryComponent } from './patient-glucose-history/patient-glucose-history.component';
 import { PatientGlucoseMonitoringComponent } from './patient-glucose-monitoring/patient-glucose-monitoring.component';
 import { DoctorDashboardComponent } from './doctor-dashboard/doctor-dashboard.component';
 import { PatientDashboardComponent } from './patient-dashboard/patient-dashboard.component';
@@ -31,7 +33,15 @@ const routes: Routes = [
   {
     component: PatientGlucoseMonitoringComponent,
     path: 'glucose-monitoring'
-  }
+  },
+  {
+    component: PatientGlucoseHistoryComponent,
+    path: 'glucose-history'
+  },
+  // {
+  //   component: PatientMealPlanComponent,
+  //   path: 'meal-plan'
+  // },
 ];
 
 @NgModule({

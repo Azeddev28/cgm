@@ -1,14 +1,5 @@
 <div class="circle-wrap">
   <div class="circle">
-    {{ glucoseReadingData[0].data[glucoseReadingData[0].data.length - 1] }}
-  </div>
-</div>
-
-<div class="flex">
-  <div class="flex-item">
-    <div style="display: block;">
-      <canvas baseChart height="300px" width="100vw" [datasets]="glucoseReadingData" [labels]="glucoseReadingTime" [legend]="false" [chartType]="'line'"
-        [plugins]="lineChartPlugins" [options]="lineChartOptions"></canvas>
-    </div>
+    <p style="font-size: 0.5em;">{{ glucoseReadingValue }}</p>
   </div>
 </div>
