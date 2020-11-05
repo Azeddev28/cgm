@@ -1,1 +1,13 @@
-<p>doctor-patient-list works!</p>
+<h1>Patient List</h1>
+<table class="table">
+    <thead>
+        <th>
+            Name
+        </th>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let patient of PatientList">
+            <tr><td>{{patient.first_name}} {{patient.last_name}}</td>
+        </ng-container>
+    </tbody>
+</table>

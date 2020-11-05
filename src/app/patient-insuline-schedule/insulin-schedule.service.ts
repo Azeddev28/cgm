@@ -14,7 +14,7 @@ export class InsulinScheduleService {
     const requestOptions = {                                                                                                                                                                                 
       headers: new HttpHeaders().set('Authorization', `Token ${token}`), 
     };
-    return this.http.get(this.baseUrl + "/patient/medication-schedule", requestOptions);
+    return this.http.get(this.baseUrl + "/patient/medication-schedule/", requestOptions);
   }
 
 }

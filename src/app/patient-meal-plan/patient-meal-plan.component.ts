@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MealPlanService} from './meal-plan.service';
-
-export interface MealPlan {
-  name: string,
-  scheduled_time: string
-}
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-patient-meal-plan',
@@ -15,8 +11,7 @@ export interface MealPlan {
 
 export class PatientMealPlanComponent implements OnInit {
   
-  MealPlanList: MealPlan[] = []
-  displayedColumns: string[] = ['name', 'scheduled time'];
+  MealPlanList = []
   constructor(private api:MealPlanService) {
     this.getMealPlan();
    }
@@ -24,8 +19,14 @@ export class PatientMealPlanComponent implements OnInit {
    getMealPlan = () => {
     this.api.getMealPlan().subscribe(
       data => {
-        console.log(data);
-        // this.MealPlanList = data;
+        for(var i=0; i<data.length; i++)
+        {
+          var mealDic = {
+            scheduled_time: moment(data[i]['created_at']).format("hh:mm A"),
+            name: data[i]['name']
+          }
+          this.MealPlanList.push(mealDic);
+        }
       },
       error => {
         console.log(error);

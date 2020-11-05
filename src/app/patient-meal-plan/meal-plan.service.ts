@@ -14,7 +14,7 @@ export class MealPlanService {
     const requestOptions = {                                                                                                                                                                                 
       headers: new HttpHeaders().set('Authorization', `Token ${token}`), 
     };
-    return this.http.get(this.baseUrl + "/patient/meal-plan", requestOptions);
+    return this.http.get(this.baseUrl + "/patient/meal-plan/", requestOptions);
   }
 }
 

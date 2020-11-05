@@ -9,6 +9,7 @@ import { LandingComponent } from './landing/landing.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PatientInsulineScheduleComponent } from './patient-insuline-schedule/patient-insuline-schedule.component';
+import { DoctorPatientListComponent } from './doctor-patient-list/doctor-patient-list.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     component: PatientInsulineScheduleComponent,
     path: 'insulin-schedule'
+  },
+  {
+    component: DoctorPatientListComponent,
+    path: 'patient-list'
   }
 ];
 

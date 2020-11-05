@@ -1,1 +1,17 @@
 <h1>Meal Plan</h1>
+<table class="table">
+    <thead>
+        <th>
+            Name
+        </th>
+        <th>
+            Scheduled Time
+        </th>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let meal of MealPlanList">
+            <tr><td>{{meal.name}}</td>
+            <td>{{meal.scheduled_time}}</td></tr>
+        </ng-container>
+    </tbody>
+</table>
