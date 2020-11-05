@@ -31,6 +31,7 @@ export class AuthService {
       }).toPromise();
       this.logger.next(true);
       localStorage.setItem('token', login.token);
+      localStorage.setItem('user_type', login.user.user_type);
     } catch (error) {
       throw error;
     }

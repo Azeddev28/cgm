@@ -41,7 +41,11 @@ export class LoginComponent implements OnInit {
     this.disableButton = true;
     try {
       await this.authService.login(this.username.value, this.password.value);
-      this.router.navigate(['/patient']);
+      if(localStorage.getItem('user_type') == 'patient')
+        this.router.navigate(['/patient']);
+      else
+        this.router.navigate(['/doctor']);
+
     } catch (error) {
       this.toaster.open('Invalid username or password');
     }
