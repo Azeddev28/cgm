@@ -34,7 +34,6 @@ export class PatientGlucoseHistoryComponent implements OnInit {
         for(var i=0; i<data.length; i++)
         {
           var time = moment(data[i].created_at).format("hh:mm A");
-          console.log(time);
           this.timesArray.push(time);
           this.glucoseReadings.push(data[i].glucose_level);
         }

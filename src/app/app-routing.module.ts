@@ -8,6 +8,7 @@ import { SignupComponent } from './signup/signup.component';
 import { LandingComponent } from './landing/landing.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PatientInsulineScheduleComponent } from './patient-insuline-schedule/patient-insuline-schedule.component';
 
 const routes: Routes = [
   {
@@ -38,10 +39,14 @@ const routes: Routes = [
     component: PatientGlucoseHistoryComponent,
     path: 'glucose-history'
   },
-  // {
-  //   component: PatientMealPlanComponent,
-  //   path: 'meal-plan'
-  // },
+  {
+    component: PatientMealPlanComponent,
+    path: 'meal-plan'
+  },
+  {
+    component: PatientInsulineScheduleComponent,
+    path: 'insulin-schedule'
+  }
 ];
 
 @NgModule({
